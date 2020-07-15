@@ -11,8 +11,22 @@
 		}
 	</style>
 	
-	<script src="language/template-x" class="bookTemplate" >
+	<script type="language/template-x" class="bookTemplate" >
+		{{#each users}}
+	<div>
+		Dear <i>{{firstName}}</i>,
+	</div>
+	<br>
+	<div>
+The {{bookCount}} books you took out at the library is due in {{dayCount}} days.
 
+	</div>
+	<br>
+	<div>
+		Please return these books to us in the next <strong>{{dayCount}}</strong> days.
+	</div>
+	<hr>
+	{{/each}}
 	</script>
 
 
@@ -20,6 +34,7 @@
 <body>
 
 	<div class="message1" ></div>
+	<div class="message2" ></div>
 	
 </body>
 <script src="books.js"></script>

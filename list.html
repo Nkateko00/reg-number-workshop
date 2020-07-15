@@ -40,7 +40,6 @@
 			padding: 1em;
 			margin-bottom: 1em;
 		}
-
 	</style>
 </head>
 
@@ -50,11 +49,10 @@
 		<h1>The list</h1>
 		<button class="addItem">Add item</button>
 		<button class="clearItem">Clear items</button>
-		<input type="text" class="itemText textInput" placeholder="Enter item text" >
-		<input type="text" class="filterText textInput" placeholder="Filter text" >
+		<input type="text" class="itemText textInput" placeholder="Enter item text">
+		<input type="text" class="filterText textInput" placeholder="Filter text">
 
 		<ul class="the_list">
-			<li>Item in the list</li>
 		</ul>
 	</div>
 
@@ -69,17 +67,52 @@
 	const itemText = document.querySelector(".itemText");
 	const filterText = document.querySelector(".filterText");
 
+	let items = [];
+
 	clearItem.addEventListener("click", function () {
 		// clear all the list items - by setting the innerHTML of theList to a blank string.
+		theList.innerHTML = "";
+		items = [];
 	});
 
 	addItem.addEventListener("click", function () {
+		
+		let theValue = "My new element";
+		if (itemText.value) {
+			theValue = itemText.value;
+		}
+		items.push(theValue);
+
+		showList(items);
 
 	});
 
-	filterText.addEventListener("keyup", function() {
-		
-		console.log(filterText.value);
+	// my filter function
+	function filter(list, value) {
+		const filteredList = [];
+		for (var i = 0; i < list.length; i++) {
+			const currentItem = list[i];
+			if (currentItem.indexOf(value) !== -1) {
+				filteredList.push(currentItem)
+			}
+		}
+		return filteredList;
+	}
+
+	function showList(list) {
+		theList.innerHTML = "";
+		for (var i = 0; i < list.length; i++) {
+			const currentItem = list[i];
+			const theElement = document.createElement("li");
+			theElement.innerHTML = currentItem;
+			theList.appendChild(theElement);
+		}
+	}
+
+	filterText.addEventListener("keyup", function () {
+
+		const myFilteredItems = filter(items, filterText.value);
+		showList(myFilteredItems);
 
 	});
 
