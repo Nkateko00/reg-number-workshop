@@ -40,7 +40,6 @@
 			padding: 1em;
 			margin-bottom: 1em;
 		}
-
 	</style>
 </head>
 
@@ -50,8 +49,8 @@
 		<h1>The list</h1>
 		<button class="addItem">Add item</button>
 		<button class="clearItem">Clear items</button>
-		<input type="text" class="itemText textInput" placeholder="Enter item text" >
-		<input type="text" class="filterText textInput" placeholder="Filter text" >
+		<input type="text" class="itemText textInput" placeholder="Enter item text">
+		<input type="text" class="filterText textInput" placeholder="Filter text">
 
 		<ul class="the_list">
 			<li>Item in the list</li>
@@ -74,11 +73,15 @@
 	});
 
 	addItem.addEventListener("click", function () {
+		const theElement = document.createElement("li");
+		theElement.innerHTML = "My new element";
+		theList.appendChild(theElement);
+
 
 	});
 
-	filterText.addEventListener("keyup", function() {
-		
+	filterText.addEventListener("keyup", function () {
+ 
 		console.log(filterText.value);
 
 	});
