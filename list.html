@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+	<title>List Application</title>
 	<style>
 		body {
 			font-family: Arial, Helvetica, sans-serif;
@@ -68,20 +68,34 @@
 	const itemText = document.querySelector(".itemText");
 	const filterText = document.querySelector(".filterText");
 
+
+	var myList = [];
+
 	clearItem.addEventListener("click", function () {
-		// clear all the list items - by setting the innerHTML of theList to a blank string.
+		const theElmnt = document.createElement("li");
+		theList.innerHTML = "";
+		// theList.appendChild(theElmnt);
 	});
 
 	addItem.addEventListener("click", function () {
+		var theLatestValue = "My new Element";
+
 		const theElement = document.createElement("li");
-		theElement.innerHTML = "My new element";
+		theElement.innerHTML = theLatestValue;
 		theList.appendChild(theElement);
+
+		if (itemText.value) {
+			theLatestValue = theElement.innerHTML 
+		} else {
+			theElement.innerHTML = "My new element";
+		}
+		//makes your text value editable.
 
 
 	});
 
 	filterText.addEventListener("keyup", function () {
- 
+
 		console.log(filterText.value);
 
 	});
