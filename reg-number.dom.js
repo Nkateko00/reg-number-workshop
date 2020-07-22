@@ -4,6 +4,8 @@ const regNumbers = document.querySelector(".regNumbers");
 const addRegNumberBtn = document.querySelector(".addRegNumber");
 const message = document.querySelector(".message");
 
+var regNumbers = [];
+
 addRegNumberBtn.addEventListener("click", function() {
 
 	if (regNumberEntered.value == "") {
@@ -13,3 +15,6 @@ addRegNumberBtn.addEventListener("click", function() {
 
 	regNumber.innerHTML = regNumberEntered.value;
 });
+
+
+

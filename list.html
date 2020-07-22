@@ -78,26 +78,41 @@
 	});
 
 	addItem.addEventListener("click", function () {
+		const theItemsOnList = document.createElement("li");
 		var theLatestValue = "My new Element";
 
-		const theElement = document.createElement("li");
-		theElement.innerHTML = theLatestValue;
-		theList.appendChild(theElement);
-
 		if (itemText.value) {
-			theLatestValue = theElement.innerHTML 
-		} else {
-			theElement.innerHTML = "My new element";
+			theLatestValue = itemText.value
 		}
-		//makes your text value editable.
 
-
+		myList.push(theLatestValue);
+		theItemsOnList.innerHTML = "My new element";
+		theItemsOnList.innerHTML = theLatestValue;
+		theList.appendChild(theItemsOnList);
+		//makes your text value visible.
 	});
 
 	filterText.addEventListener("keyup", function () {
+		theList.innerHTML = "";
+		//clear List
+		const filteredList = [];
 
-		console.log(filterText.value);
+		for (var i = 0; i < myList.length; i++) {
+			const newList = myList[i];
 
+			if (newList.indexOf(filterText.value) !== -1) {
+				filteredList.push(newList);
+			}
+
+		}
+		for (var i = 0; i < filteredList.length; i++) {
+			const latest = filteredList[i];
+			const listItems = document.createElement("li");
+			listItems.innerHTML = latest;
+			theList.appendChild(listItems);
+
+
+		}
 	});
 
 
